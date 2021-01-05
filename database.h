@@ -45,7 +45,7 @@ struct book {
     book(const book& b) : id(b.id), title(b.title), author(b.author), year(b.year), count(b.count) {}
 
     friend istream& operator >> (istream& in, book& b) {
-        cout << "Ââåäèòå íàçâàíèå: ";
+        cout << "Введите название: ";
         char c;
         do {
             c = getchar();
@@ -55,7 +55,7 @@ struct book {
             c = getchar();
             if (c == '\n') break;
         }
-        cout << "Ââåäèòå àâòîðà: ";
+        cout << "Введите автора: ";
         do {
             c = getchar();
         } while (c == ' ' || c == '\n');
@@ -65,11 +65,11 @@ struct book {
             if (c == '\n') break;
         }
         while (true) {
-            cout << "Ââåäèòå ãîä âûïóñêà: ";
+            cout << "Введите год выпуска: ";
             string s;
             in >> s;
             if (!is_integer(s)) {
-                cout << "Ââåäèòå êîððåêòíîå ÷èñëî!" << endl;
+                cout << "Введите корректное число!" << endl;
                 continue;
             }
             b.year = stoi(s);
@@ -77,11 +77,11 @@ struct book {
         }
 
         while (true) {
-            cout << "Ââåäèòå êîëè÷åñòâî êîïèé êíèãè â áèáëèîòåêå: ";
+            cout << "Введите количество копий книги в библиотеке: ";
             string s;
             in >> s;
             if (!is_integer(s)) {
-                cout << "Ââåäèòå êîððåêòíîå ÷èñëî!" << endl;
+                cout << "Введите корректное число!" << endl;
                 continue;
             }
             b.count = stoi(s);
@@ -124,7 +124,7 @@ struct user {
     user(const user& u) : id(u.id), name(u.name), last_name(u.last_name), tel_number(u.tel_number), taked_books(u.taked_books) {}
 
     friend istream& operator >> (istream& in, user& u) {
-        cout << "Ââåäèòå èìÿ: ";
+        cout << "Введите имя: ";
         char c;
         do {
             c = getchar();
@@ -135,7 +135,7 @@ struct user {
             c = getchar();
             if (c == '\n') break;
         }
-        cout << "Ââåäèòå ôàìèëèÿ: ";
+        cout << "Введите фамилию: ";
         do {
             c = getchar();
         } while (c == ' ' || c == '\n');
@@ -144,7 +144,7 @@ struct user {
             c = getchar();
             if (c == '\n') break;
         }
-        cout << "Ââåäèòå íîìåð òåëåôîíà: ";
+        cout << "Введите номер телефона: ";
         in >> u.tel_number;
         return in;
     }
