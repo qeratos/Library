@@ -1,13 +1,10 @@
 //
 // Created by younDev on 05.12.2020.
 //
-
+#pragma once
 #ifndef LIBRARY_LOGIC_H
 #define LIBRARY_LOGIC_H
 
-#pragma once
-#ifndef logic
-#define logic
 
 #include <iostream>
 #include <algorithm>
@@ -38,9 +35,9 @@ void find_book(const vector<book>& books, const string& title) {
             finded_books.push_back(b);
         }
     }
-    cout << "Íàéäåííûå êíèãè:" << endl;
+    cout << "Найденные книги:" << endl;
     if (finded_books.empty()) {
-        cout << "Íè÷åãî íå íàéäåíî" << endl;
+        cout << "Ничего не найдено" << endl;
     }
     else {
         print_books(finded_books);
@@ -50,7 +47,7 @@ void find_book(const vector<book>& books, const string& title) {
 
 void find_book(const vector<book>& books) {
     string title;
-    cout << "Ââåäèòå íàçâàíèå: ";
+    cout << "Введите название: ";
     cin >> title;
     find_book(books, title);
 }
@@ -63,9 +60,9 @@ void find_user(const vector<user>& users, const string& name) {
             finded_users.push_back(u);
         }
     }
-    cout << "Íàéäåííûå ÷èòàòåëè:" << endl;
+    cout << "Найденные читатели:" << endl;
     if (finded_users.empty()) {
-        cout << "Íè÷åãî íå íàéäåíî" << endl;
+        cout << "Ничего не найдено" << endl;
     }
     else {
         print_users(finded_users);
@@ -75,7 +72,7 @@ void find_user(const vector<user>& users, const string& name) {
 
 void find_user(const vector<user>& users) {
     string name;
-    cout << "Ââåäèòå èìÿ: ";
+    cout << "Введите имя: ";
     cin >> name;
     find_user(users, name);
 }
@@ -99,20 +96,20 @@ void add_user(vector<user>& users) {
 void give_book(vector<book>& books, vector<user>& users) {
     int book_id;
     while (true) {
-        cout << "Ââåäèòå id êíèãè: " << endl;
+        cout << "Введите номер книги: " << endl;
         string s;
         cin >> s;
         if (!is_integer(s)) {
-            cout << "Ââåäèòå êîððåêòíîå ÷èñëî!" << endl;
+            cout << "Введите корректное число!" << endl;
             continue;
         }
         book_id = stoi(s);
         if (book_id <= 0 || book_id > books.size()) {
-            cout << "Ââåäèòå êîððåêòíîå ÷èñëî!" << endl;
+            cout << "Введите корректное число!" << endl;
             continue;
         }
         if (books[book_id - 1].count == 0) {
-            cout << "Ýòîé êíèãè â áèáëèîòåêå áîëüøå íå îñòàëàñü" << endl;
+            cout << "Этой книги в библиотеке больше не осталось" << endl;
             return;
         }
         break;
@@ -120,16 +117,16 @@ void give_book(vector<book>& books, vector<user>& users) {
 
     int user_id;
     while (true) {
-        cout << "Ââåäèòå id ÷èòàòåëÿ: " << endl;
+        cout << "Введите номер читателя: " << endl;
         string s;
         cin >> s;
         if (!is_integer(s)) {
-            cout << "Ââåäèòå êîððåêòíîå ÷èñëî!" << endl;
+            cout << "Введите корректное число!" << endl;
             continue;
         }
         user_id = stoi(s);
         if (user_id <= 0 || user_id > users.size()) {
-            cout << "Ââåäèòå êîððåêòíîå ÷èñëî!" << endl;
+            cout << "Введите корректное число!" << endl;
             continue;
         }
         break;
@@ -142,7 +139,7 @@ void give_book(vector<book>& books, vector<user>& users) {
         books[book_id - 1].count--;
     }
     else {
-        cout << "Ó ÷èòàòåëÿ óæå åñòü ýòà êíèãà" << endl;
+        cout << "У читателя уже есть эта книга" << endl;
     }
 }
 
@@ -152,12 +149,12 @@ void taked_books(vector<book>& books, vector<user>& users) {
         string s;
         cin >> s;
         if (!is_integer(s)) {
-            cout << "Ââåäèòå êîððåêòíîå ÷èñëî!" << endl;
+            cout << "Введите корректное число!" << endl;
             continue;
         }
         user_id = stoi(s);
         if (user_id <= 0 || user_id > users.size()) {
-            cout << "Ââåäèòå êîððåêòíîå ÷èñëî!" << endl;
+            cout << "Введите корректное число!" << endl;
             continue;
         }
         break;
@@ -167,11 +164,8 @@ void taked_books(vector<book>& books, vector<user>& users) {
     for (int id : users[user_id - 1].taked_books) {
         taked.push_back(books[id - 1]);
     }
-    cout << "Âçÿòûå êíèãè: " << endl;
+    cout << "Взятые книги: " << endl;
     print_books(taked);
 }
-
-
-#endif
 
 #endif //LIBRARY_LOGIC_H
