@@ -1,14 +1,10 @@
 //
 // Created by younDev on 05.12.2020.
 //
-
+#pragma once
 #ifndef LIBRARY_DATABASE_H
 #define LIBRARY_DATABASE_H
 
-
-#pragma once
-#ifndef database
-#define database
 
 #include <iostream>
 #include <algorithm>
@@ -171,7 +167,6 @@ struct user {
 };
 
 
-
 void saveusers(const string& filename, vector<user>& users) {
     ofstream fout(filename);
     for (user u : users) {
@@ -186,6 +181,7 @@ void savebooks(const string& filename, vector<book>& books) {
         fout << b << endl;
     }
 }
+
 
 void loadbooks(const string& filename, vector<book>& books) {
     ifstream fin(filename);
@@ -208,10 +204,5 @@ void loadbooks(const string& filename, vector<book>& books) {
 
     fin.close();
 }
-
-
-#endif // database
-
-
 
 #endif //LIBRARY_DATABASE_H
